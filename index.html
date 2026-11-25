@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hebrew Date Converter</title>
+
+    <link rel="stylesheet" href="{{ url_for('stylesheet') }}">
+</head>
+
+<body>
+    <main class="container">
+
+        <h1>Hebrew Date Converter</h1>
+
+        <p class="subtitle">
+            Convert Gregorian dates to the Hebrew calendar
+        </p>
+
+        <form method="GET">
+
+            <label for="date">Select a Gregorian date</label>
+
+            <input type="date"
+                   id="date"
+                   name="date"
+                   value="{{ selected_date }}"
+                   min="1900-01-01"
+                   required>
+
+            <button type="submit">Convert Date</button>
+
+        </form>
+
+        {% if hebrew_date %}
+            <div class="result">
+                <p class="result-label">Your Hebrew Date</p>
+                <h2 lang="he" dir="rtl">{{ hebrew_date }}</h2>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+
+
+    </main>
+</body>
+</html>
